@@ -2,36 +2,32 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable('Addresses', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      calle: {
         type: Sequelize.STRING,
         allowNull : false
       },
-      email: {
-        type: Sequelize.STRING,
-        allowNull : false,
-        validate : {
-          isEmail : true
-        },
-        unique : true
-      },
-      password: {
+      ciudad: {
         type: Sequelize.STRING,
         allowNull : false
       },
-      image: {
+      pais: {
         type: Sequelize.STRING,
-        defaultValue : "https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-HD-Image.png"
+        allowNull : false
       },
-      isValid: {
-        type: Sequelize.BOOLEAN,
-        defaultValue : false
+      c_postal: {
+        type: Sequelize.INTEGER,
+        allowNull : false
+      },
+      user_id: {
+        type: Sequelize.INTEGER,
+        allowNull : false
       },
       createdAt: {
         allowNull: false,
@@ -44,6 +40,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Users');
+    await queryInterface.dropTable('Addresses');
   }
 };
