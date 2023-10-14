@@ -8,15 +8,16 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Trolley.belongsTo(models.Product, { foreignKey: "product_id" });
+      // define association here
       Trolley.belongsTo(models.User, { foreignKey: "user_id" });
+      Trolley.belongsTo(models.Product, { foreignKey: "product_id" });
     }
   }
   Trolley.init(
     {
       cantidad: DataTypes.INTEGER,
-      user_id: DataTypes.INTEGER,
-      product_id: DataTypes.INTEGER,
+      user_id: DataTypes.STRING,
+      product_id: DataTypes.STRING,
     },
     {
       sequelize,
